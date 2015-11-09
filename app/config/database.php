@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'recharger',
+			'database'  => 'library',
 			'username'  => 'root',
-			'password'  => '8881212',
+			'password'  => '696163',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

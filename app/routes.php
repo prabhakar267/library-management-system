@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', 
-	  array('as' => 'home', 
-	        'uses' => 'HomeController@home'
-));
 
 /* Unauthenticated group */
 Route::group(array('before' => 'guest'), function() {
@@ -37,36 +33,62 @@ Route::group(array('before' => 'guest'), function() {
 	});
 
 	/* Sign in (GET) */
-	Route::get('/account/sign-in', 
-		array('as' => 'account-sign-in',
-			'uses' => 'AccountController@getSignIn'
+	Route::get('/account/sign-in', array(
+		'as' 	=> 'account-sign-in',
+		'uses'	=> 'AccountController@getSignIn'
 	));
 
 	/* Create an account (GET) */
-	Route::get('/account/create', 
-		array('as' => 'account-create',
-		      'uses' => 'AccountController@getCreate'
+	Route::get('/account/create', array(
+		'as' 	=> 'account-create',
+		'uses' 	=> 'AccountController@getCreate'
 	));
         
 });
 
 /* Authenticated group */
 Route::group(array('before' => 'auth'), function() {
-    /* Sign out (GET) */
-    Route::get('/account/sign-out', 
-            array('as' => 'account-sign-out',
-                    'uses' => 'AccountController@getSignOut'
+
+	// Home Page of Control Panel
+	Route::get('/',array(
+		'as' 	=> 'home',
+		'uses'	=> 'HomeController@home'
+	));	
+
+	// Add Books to Database
+    Route::get('/add-books', array(
+        'as' => 'add-books',
+        'uses' => 'BooksController@renderAddBooks'
     ));
-    Route::get('/usage-test', array('as' => 'usage-test', 'uses' => 'HomeController@usageTest'));
+
+	// Add Books to Database
+    Route::get('/all-books', array(
+        'as' => 'all-books',
+        'uses' => 'BooksController@renderAllBooks'
+    ));
+
+    Route::resource('/books', 'BooksController');
+
+	// Students
+    Route::get('/registered-students', array(
+        'as' => 'registered-students',
+        'uses' => 'StudentController@renderStudents'
+    ));
+
+    Route::resource('/student', 'StudentController');
+
+
+    Route::get('/currently-issued', array(
+        'as' => 'currently-issued',
+        'uses' => 'LogController@renderLogs'
+    ));
+
+    Route::resource('/issue-log', 'LogController');
+
+
+    /* Sign out (GET) */
+    Route::get('/account/sign-out', array(
+    	'as' => 'account-sign-out',
+		'uses' => 'AccountController@getSignOut'
+    ));
 });
-
-/* API Calls */
-/*  To access any of the Routes within this Group, 
-	we need to send the API Key in the Header with Key Name "X-Auth-Token" */
-Route::group(array('prefix' => 'api/v1', 'before' => 'auth.token'), function() {
-
-    Route::get('/test', function() {
-    	return "Accessing Protected resource of " . Auth::user()->login;
-    });
-    
-});  

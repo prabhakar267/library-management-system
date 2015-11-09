@@ -2,36 +2,18 @@
 
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
+    public $categories_list = array();
+    public $branch_list = array();
+    public $student_categories_list = array();
+
+    public function __construct() {
+        $this->categories_list = Categories::select()->orderBy('category')->get();
+        $this->branch_list = Branch::select()->orderBy('id')->get();
+        $this->student_categories_list = StudentCategories::select()->orderBy('cat_id')->get();
+    }
 
 	public function home()
 	{	
-		$user_id = Auth::id();
-		$query = UserApi::select('user_api_key')
-                    ->where('user_id', '=', $user_id)
-                    ->orderBy('created_at', 'desc')->first();
-        if ($query) {
-        	$user_api_key = $query->user_api_key;
-        	View::share('user_api_key', $user_api_key );
-        }
-
-		return View::make('hello');
+		return View::make('panel.index');
 	}
-        
-        public function usageTest()
-        {
-            return View::make('usage');
-        }
-
 }

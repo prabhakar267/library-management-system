@@ -1,6 +1,6 @@
 <?php
 
-return array(
+$view_config = array(
 
 	/*
 	|--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'paths' => array(__DIR__.'/../views'),
+	'paths' => array(__DIR__.'/../views'),        
 
 	/*
 	|--------------------------------------------------------------------------
@@ -27,5 +27,31 @@ return array(
 	*/
 
 	'pagination' => 'pagination::slider-3',
+    
+        /* Scripts and static files */
+    
+        'static' => '/static'
 
 );
+
+$view_config['bootstrap'] = array(
+    'base'  => $view_config['static'] . "/bootstrap",
+    'js'    => $view_config['static'] . "/bootstrap/js",
+    'css'   => $view_config['static'] . "/bootstrap/css",
+    'img'   => $view_config['static'] . "/bootstrap/img"
+);
+
+$view_config['script'] = $view_config['static'] . "/scripts";
+$view_config['images'] = $view_config['static'] . "/images";
+$view_config['css'] = $view_config['static'] . "/css";
+
+$view_config['custom'] = array(
+    'base'  => $view_config['static'] . "/custom",
+    'js'    => $view_config['static'] . "/custom/js",
+    'css'   => $view_config['static'] . "/custom/css",
+    'font'  => $view_config['static'] . "/custom/fonts",
+    'img'   => $view_config['static'] . "/custom/img",
+    'tpl'   => $view_config['static'] . "/custom/tpl"
+);
+
+return $view_config;

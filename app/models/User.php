@@ -8,7 +8,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	/* Alowing Eloquent to insert data into our database */
-	protected $fillable = array('name', 'login', 'password', 'facebook', 'status');
+	protected $fillable = array('name', 'username', 'password', 'verification_status');
 
         public $timestamps = false;
 
@@ -19,14 +19,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'cms_users';
+	protected $table = 'users';
+	protected $primaryKey = 'id';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $hidden = array('password');
 
 	public function getAuthPassword() {
 	    return $this->password;
