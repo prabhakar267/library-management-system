@@ -41,7 +41,6 @@
                             <th>Book Name</th>
                             <th>Student ID</th>
                             <th>Student Name</th>
-                            <th>Issued By</th>
                             <th>Issued On</th>
                             <th>Return Date</th>                        
                         </tr>

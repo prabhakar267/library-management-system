@@ -5,10 +5,32 @@ class LogController extends \BaseController {
 	public function index()
 	{
 
-		$logs = Logs::select()
+		$logs = Logs::select('id','book_issue_id','student_id','issued_at')
 			->orderBy('time_stamp', 'DESC');
 		
 		$logs = $logs->get();
+
+		for($i=0; $i<count($logs); $i++){
+	        
+	        $issue_id = $logs[$i]['book_issue_id'];
+	        $student_id = $logs[$i]['student_id'];
+	        
+	        // to get the name of the book from book issue id
+	        $issue = Issue::find($issue_id);
+	        $book_id = $issue->book_id;
+	        $book = Books::find($book_id);
+			$logs[$i]['book_name'] = $book->title;
+
+			// to get the name of the student from student id
+			$student = Student::find($student_id);
+			$logs[$i]['student_name'] = $student->first_name . ' ' . $student->last_name;
+
+			// change issue date and return date in human readable format
+			$logs[$i]['issued_at'] = date('d-M', $logs[$i]['issued_at']);
+			$logs[$i]['return_at'] = date('d-M', $logs[$i]['issued_at'] + 1209600);
+
+		}
+
         return $logs;
 	}
 
