@@ -78,6 +78,11 @@ Route::group(array('before' => 'auth'), function() {
     Route::resource('/student', 'StudentController');
 
     // Issue Logs
+    Route::get('/issue-return', array(
+        'as' => 'issue-return',
+        'uses' => 'LogController@renderIssueReturn'
+    ));
+
     Route::get('/currently-issued', array(
         'as' => 'currently-issued',
         'uses' => 'LogController@renderLogs'

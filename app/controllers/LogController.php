@@ -6,7 +6,8 @@ class LogController extends \BaseController {
 	{
 
 		$logs = Logs::select('id','book_issue_id','student_id','issued_at')
-			->orderBy('time_stamp', 'DESC');
+			->where('return_time', '=', 0)
+			->orderBy('issued_at', 'DESC');
 		
 		$logs = $logs->get();
 
@@ -110,7 +111,49 @@ class LogController extends \BaseController {
 
 	public function edit($id)
 	{
-		//
+		$issueID = $id;
+
+		$conditions = array(
+			'book_issue_id'	=> $issueID,
+			'return_time'	=> 0
+		);
+
+		$log = Logs::where($conditions);
+
+		if(!$log->count()){
+			throw new Exception('Invalid Book ID entered or book already returned');
+		} else {
+		
+			$log = Logs::where($conditions)
+				->firstOrFail();
+
+
+			$log_id = $log['id'];
+			$student_id = $log['student_id'];
+			$issue_id = $log['book_issue_id'];
+
+
+			DB::transaction( function() use($log_id, $student_id, $issue_id) {
+				// change log status by changing return time
+				$log_change = Logs::find($log_id);
+				$log_change->return_time = time();
+				$log_change->save();
+
+				// decrease student book issue counter
+				$student = Student::find($student_id);
+				$student->books_issued = $student->books_issued - 1;
+				$student->save();
+
+				// change issue availability status
+				$issue = Issue::find($issue_id);
+				$issue->available_status = 1;
+				$issue->save();
+				
+			});
+
+			return 'Successfully returned';
+			
+		}
 	}
 
 	public function update($id)
@@ -124,11 +167,11 @@ class LogController extends \BaseController {
 	}
 
     public function renderLogs() {
-    
-        // $db_control = new HomeController();
-
         return View::make('panel.logs');
-            // ->with('categories_list', $db_control->categories_list);
+    }
+
+    public function renderIssueReturn() {
+        return View::make('panel.issue-return');
     }
 
 }
