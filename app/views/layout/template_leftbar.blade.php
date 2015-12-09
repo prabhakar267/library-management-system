@@ -7,11 +7,6 @@
                 </a>
             </li>
             <li>
-                <a href="">
-                    <i class="menu-icon icon-signin"></i>Add a student
-                </a>
-            </li>
-            <li>
                 <a href="{{ URL::route('registered-students') }}">
                     <i class="menu-icon icon-group"></i>Registered Students
                 </a>
@@ -27,13 +22,13 @@
                 </a>
             </li>
             <li>
-                <a href="{{ URL::route('currently-issued') }}">
-                    <i class="menu-icon icon-signout"></i>Issue A Book
+                <a href="{{ URL::route('issue-return') }}">
+                    <i class="menu-icon icon-signout"></i>Issue / Return Books
                 </a>
             </li>
             <li>
-                <a href="">
-                    <i class="menu-icon icon-signin"></i>Return A Book
+                <a href="{{ URL::route('currently-issued') }}">
+                    <i class="menu-icon icon-list-ul"></i>View all books currently issued
                 </a>
             </li>
             <!-- 
