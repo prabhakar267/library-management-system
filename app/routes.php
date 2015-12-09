@@ -12,19 +12,19 @@
 */
 
 
-/* Unauthenticated group */
+// Unauthenticated group 
 Route::group(array('before' => 'guest'), function() {
  
-	/* CSRF protection */
+	// CSRF protection 
 	Route::group(array('before' => 'csrf'), function() {
 
-		/* Create an account (POST) */
+		// Create an account (POST) 
 		Route::post('/account/create', 
 			array('as' => 'account-create-post',
 				'uses' => 'AccountController@postCreate'
 		));
 
-		/* Sign in (POST) */
+		// Sign in (POST) 
 		Route::post('/account/sign-in', 
 			array('as' => 'account-sign-in-post',
 			'uses' => 'AccountController@postSignIn'
@@ -32,13 +32,13 @@ Route::group(array('before' => 'guest'), function() {
 
 	});
 
-	/* Sign in (GET) */
+	// Sign in (GET) 
 	Route::get('/account/sign-in', array(
 		'as' 	=> 'account-sign-in',
 		'uses'	=> 'AccountController@getSignIn'
 	));
 
-	/* Create an account (GET) */
+	// Create an account (GET) 
 	Route::get('/account/create', array(
 		'as' 	=> 'account-create',
 		'uses' 	=> 'AccountController@getCreate'
@@ -46,7 +46,7 @@ Route::group(array('before' => 'guest'), function() {
         
 });
 
-/* Authenticated group */
+// Authenticated group 
 Route::group(array('before' => 'auth'), function() {
 
 	// Home Page of Control Panel
@@ -77,7 +77,7 @@ Route::group(array('before' => 'auth'), function() {
 
     Route::resource('/student', 'StudentController');
 
-
+    // Issue Logs
     Route::get('/currently-issued', array(
         'as' => 'currently-issued',
         'uses' => 'LogController@renderLogs'
@@ -86,7 +86,7 @@ Route::group(array('before' => 'auth'), function() {
     Route::resource('/issue-log', 'LogController');
 
 
-    /* Sign out (GET) */
+	// Sign out (GET) 
     Route::get('/account/sign-out', array(
     	'as' => 'account-sign-out',
 		'uses' => 'AccountController@getSignOut'
