@@ -8,8 +8,6 @@ class LogController extends \BaseController {
 		$logs = Logs::select()
 			->orderBy('time_stamp', 'DESC');
 		
-		// $this->filterQuery($book_list);
-		
 		$logs = $logs->get();
         return $logs;
 	}
@@ -54,8 +52,28 @@ class LogController extends \BaseController {
 
 							// book is to be issued
 							DB::transaction( function() use($bookID, $studentID) {
-								
-							})
+								$log = new Logs;
+
+								$log->book_issue_id = $bookID;
+								$log->student_id	= $studentID;
+								$log->issue_by		= Auth::id();
+								$log->issued_at		= time();
+								$log->return_time	= 0;
+
+								$log->save();
+
+								// changing the availability status
+								$book = Issue::find($bookID);
+								$book->available_status = 0;
+								$book->save();
+
+								// increasing number of books issed by student
+								$student = Student::find($studentID);
+								$student->books_issued = $student->books_issued + 1;
+								$student->save();
+							});
+
+							return 'Successfully Issued';
 						}
 					}
 				}

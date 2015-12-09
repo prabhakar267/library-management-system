@@ -32,7 +32,10 @@ class BooksController extends \BaseController {
 	        	'available_status'	=> 1
         	);
 
-	        $book_list[$i]['total_books'] = Issue::select()->where('book_id','=',$id)->count();
+	        $book_list[$i]['total_books'] = Issue::select()
+	        	->where('book_id','=',$id)
+	        	->count();
+	        
 	        $book_list[$i]['avaliable'] = Issue::select()
 	        	->where($conditions)
 	        	->count();

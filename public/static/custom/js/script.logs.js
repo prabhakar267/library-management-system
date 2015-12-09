@@ -13,7 +13,9 @@ function loadResults(){
                 table.html('<tr><td colspan="99">No Logs</td></tr>');
             } else {
                 table.html('');
-                for (var log in data) {
+                // console.log(JSON.stringify(data));
+                
+                for(var log in data){
                     table.append(default_tpl(data[log]));
                 }
             }

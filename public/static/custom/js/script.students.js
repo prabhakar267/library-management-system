@@ -21,8 +21,8 @@ function loadResults(){
                 table.html('<tr><td colspan="99">No Students for these filters</td></tr>');
             } else {
                 table.html('');
-                for (var plan in data) {
-                    table.append(default_tpl(data[plan]));
+                for (var student in data) {
+                    table.append(default_tpl(data[student]));
                 }
             }
         },
