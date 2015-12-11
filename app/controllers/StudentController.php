@@ -8,21 +8,29 @@ class StudentController extends \BaseController {
 
 	}
 
-	public function index(){
-		$students = Student::select()
+	public function index()
+	{
+		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id', 'approved')
+			->where('approved', '=', '0')
 			->orderBy('student_id');
-		
-		$this->filterQuery($students);
-		
-		$students = $students->get();
 
+		$this->filterQuery($students);
+		$students = $students->get();
+    
         return $students;
 	}
 
 
 	public function create()
 	{
-		//
+		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id',  'approved')
+			->where('approved', '=', '1')
+			->orderBy('student_id');
+
+		$this->filterQuery($students);
+		$students = $students->get();
+    
+        return $students;
 	}
 
 
@@ -98,6 +106,13 @@ class StudentController extends \BaseController {
 	public function renderStudents(){
 		$db_control = new HomeController;
 		return View::make('panel.students')
+			->with('branch_list', $db_control->branch_list)
+			->with('student_categories_list', $db_control->student_categories_list);
+	}
+
+	public function renderApprovalStudents(){
+		$db_control = new HomeController;
+		return View::make('panel.approval')
 			->with('branch_list', $db_control->branch_list)
 			->with('student_categories_list', $db_control->student_categories_list);
 	}

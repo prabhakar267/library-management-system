@@ -7,8 +7,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ URL::route('students-for-approval') }}">
+                    <i class="menu-icon icon-filter"></i>Students for approval
+                </a>
+            </li>
+            <li>
                 <a href="{{ URL::route('registered-students') }}">
-                    <i class="menu-icon icon-group"></i>Registered Students
+                    <i class="menu-icon icon-group"></i>All Students Registered
                 </a>
             </li>
             <li>
@@ -31,14 +36,6 @@
                     <i class="menu-icon icon-list-ul"></i>View all books currently issued
                 </a>
             </li>
-            <!-- 
-            <li>
-                <a href="#">
-                    <i class="menu-icon icon-inbox"></i>
-                    Inbox
-                    <b class="label green pull-right">11</b>
-                </a>
-            </li> -->
         </ul>
         
         <ul class="widget widget-menu unstyled">

@@ -75,6 +75,11 @@ Route::group(array('before' => 'auth'), function() {
         'uses' => 'StudentController@renderStudents'
     ));
 
+    Route::get('/students-for-approval', array(
+        'as' => 'students-for-approval',
+        'uses' => 'StudentController@renderApprovalStudents'
+    ));
+
     Route::resource('/student', 'StudentController');
 
     // Issue Logs

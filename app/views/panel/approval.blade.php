@@ -7,7 +7,7 @@
 <div class="content">
     <div class="module">
         <div class="module-head">
-            <h3>Tables</h3>
+            <h3>Students waiting for their approval to access Library</h3>
         </div>
         <div class="module-body">
             <div class="controls">
@@ -44,7 +44,7 @@
                         <th>Approve</th>
                     </tr>
                 </thead>
-                <tbody id="students-table">
+                <tbody id="approval-table">
                     <tr class="text-center">
                         <td colspan="99">Loading...</td>
                     </tr>
@@ -60,8 +60,8 @@
     var branches_list = {{ json_encode($branch_list) }},
         categories_list = {{ json_encode($student_categories_list) }};
 </script>
-<script type="text/javascript" src="{{ Config::get('view.custom.js') }}/script.students.js"></script>
-<script type="text/template" id="allstudents_show">
-    @include('underscore.allstudents_show')
+<script type="text/javascript" src="{{ Config::get('view.custom.js') }}/script.student-approval.js"></script>
+<script type="text/template" id="approvalstudents_show">
+    @include('underscore.approvalstudents_show')
 </script>
 @stop
