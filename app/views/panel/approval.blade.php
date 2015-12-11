@@ -40,7 +40,6 @@
                         <th>Roll Number</th>
                         <th>Branch</th>
                         <th>Category</th>
-                        <th>Email ID</th>
                         <th>Approve</th>
                     </tr>
                 </thead>

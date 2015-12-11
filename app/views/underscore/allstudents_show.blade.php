@@ -22,12 +22,5 @@ var student_year = obj.year.trim().substring(2,4);
 	<td><%= student_branch %></td>
 	<td><%= student_category %></td>
 	<td><%= obj.email_id %></td>
-
-	<td class="student-status" data-status="<%= obj.approved %>">
-		<% if(obj.approved == 0){ %>
-			<a class="btn btn-danger">Approve</a>
-		<% } else { %>
-			<a class="btn btn-success">Unapprove</a>
-		<% } %>
-	</td>
+	<td><%= obj.books_issued %></td>
 </tr>

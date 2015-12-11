@@ -81,7 +81,7 @@ $(document).ready(function(){
             studentID = selectedRow.data('student-id');
         
         console.log(studentID);
-        console.log(student_flag);
+        // console.log(student_flag);
         
         approveStudent(studentID, $(this));
     });

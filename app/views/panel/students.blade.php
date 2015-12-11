@@ -41,7 +41,7 @@
                         <th>Branch</th>
                         <th>Category</th>
                         <th>Email ID</th>
-                        <th>Approve</th>
+                        <th>Books Issued</th>
                     </tr>
                 </thead>
                 <tbody id="students-table">

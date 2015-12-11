@@ -10,7 +10,7 @@ class StudentController extends \BaseController {
 
 	public function index()
 	{
-		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id', 'approved')
+		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year')
 			->where('approved', '=', '0')
 			->orderBy('student_id');
 
@@ -23,7 +23,7 @@ class StudentController extends \BaseController {
 
 	public function create()
 	{
-		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id',  'approved')
+		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id', 'books_issued')
 			->where('approved', '=', '1')
 			->orderBy('student_id');
 
