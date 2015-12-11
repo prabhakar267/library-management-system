@@ -10,8 +10,13 @@ class StudentController extends \BaseController {
 
 	public function index()
 	{
+		$conditions = array(
+			'approved'	=> 0,
+			'rejected'	=> 0
+		);
+
 		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year')
-			->where('approved', '=', '0')
+			->where($conditions)
 			->orderBy('student_id');
 
 		$this->filterQuery($students);
@@ -23,8 +28,13 @@ class StudentController extends \BaseController {
 
 	public function create()
 	{
+		$conditions = array(
+			'approved'	=> 1,
+			'rejected'	=> 0
+		);
+		
 		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id', 'books_issued')
-			->where('approved', '=', '1')
+			->where($conditions)
 			->orderBy('student_id');
 
 		$this->filterQuery($students);
@@ -76,18 +86,21 @@ class StudentController extends \BaseController {
 	 * @return Response
 	 */
 	public function update($id){
-
-		DB::transaction( function() use($id) {
-            $flag = intval(Input::get('flag'));
-            $student = Student::findOrFail($id);
-            $student->approved = $flag;
-
-            if(!$student->save()){
-            	throw new Exception("Try Again");
-            }
-            
-        });
-        return "Student's approval status successfully changed.";
+        $flag = (bool)Input::get('flag');
+		
+        $student = Student::findOrFail($id);
+		
+		if($flag){
+			// if student is approved
+	        $student->approved = 1;
+		} else {
+			// if student is rejected for some reason
+			$student->rejected = 1;
+		}
+        
+        $student->save();
+    
+        return "Student's approval/rejection status successfully changed.";
 	}
 
 

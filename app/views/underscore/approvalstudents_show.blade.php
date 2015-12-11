@@ -21,8 +21,8 @@ var student_year = obj.year.trim().substring(2,4);
 	<td><%= obj.roll_num %>/<%= student_branch %>/<%= student_year %></td>
 	<td><%= student_branch %></td>
 	<td><%= student_category %></td>
-	<td class="student-status">
-		<a class="btn btn-success" data-status="1">Approve</a>
-		<a class="btn btn-danger" data-status="0">Reject</a>
+	<td>
+		<a class="btn btn-success student-status" data-status="1">Approve</a>
+		<a class="btn btn-danger student-status" data-status="0">Reject</a>
 	</td>
 </tr>

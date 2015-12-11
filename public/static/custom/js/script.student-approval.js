@@ -35,15 +35,17 @@ function loadResults(){
     });
 }
 
-function approveStudent(studentID, btn) {
+function approveStudent(studentID, flag, btn) {
     var module_body = btn.parents('.module-body'),
         table = $('#approval-table');
+
+    console.log(flag);
 
     $.ajax({
         type : 'POST',
         data : { 
             _method : "PUT", 
-            flag : 1
+            flag : flag
         },
         url : config.path.ajax + '/student/' + studentID,
         success: function(data) {
@@ -78,12 +80,13 @@ $(document).ready(function(){
 
     $(document).on("click",".student-status",function(){
         var selectedRow = $(this).parents('tr'),
-            studentID = selectedRow.data('student-id');
+            studentID = selectedRow.data('student-id')
+            flag = $(this).data('status');
         
         console.log(studentID);
-        // console.log(student_flag);
+        console.log(flag);
         
-        approveStudent(studentID, $(this));
+        approveStudent(studentID, flag, $(this));
     });
     
     loadResults();
