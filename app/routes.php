@@ -19,16 +19,22 @@ Route::group(array('before' => 'guest'), function() {
 	Route::group(array('before' => 'csrf'), function() {
 
 		// Create an account (POST) 
-		Route::post('/create', 
-			array('as' => 'account-create-post',
-				'uses' => 'AccountController@postCreate'
+		Route::post('/create', array(
+			'as' => 'account-create-post',
+			'uses' => 'AccountController@postCreate'
 		));
 
 		// Sign in (POST) 
-		Route::post('/sign-in', 
-			array('as' => 'account-sign-in-post',
+		Route::post('/sign-in', array(
+			'as' => 'account-sign-in-post',
 			'uses' => 'AccountController@postSignIn'
 		));
+
+		// Sign in (POST) 
+		Route::post('/student-registration', array(
+			'as' => 'student-registration-post',
+			'uses' => 'StudentController@postRegistration'
+		));		
 
 	});
 
@@ -42,6 +48,12 @@ Route::group(array('before' => 'guest'), function() {
 	Route::get('/create', array(
 		'as' 	=> 'account-create',
 		'uses' 	=> 'AccountController@getCreate'
+	));
+
+	// Student Registeration form 
+	Route::get('/student-registration', array(
+		'as' 	=> 'student-registration',
+		'uses' 	=> 'StudentController@getRegistration'
 	));
         
 });

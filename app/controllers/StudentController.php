@@ -130,5 +130,49 @@ class StudentController extends \BaseController {
 			->with('student_categories_list', $db_control->student_categories_list);
 	}
 
+	public function getRegistration(){
+		$db_control = new HomeController;
+		return View::make('public.registration')
+			->with('branch_list', $db_control->branch_list)
+			->with('student_categories_list', $db_control->student_categories_list);
+	}
+
+	public function postRegistration(){
+
+		$validator = Validator::make(
+			Input::all(),
+			array(
+				'first'			=> 'required|alpha',
+				'last'			=> 'required|alpha',
+				'rollnumber'	=> 'required|integer',
+				'branch'		=> 'required|between:0,10',
+				'year'			=> 'required|integer',
+				'email'			=> 'required|email',
+				'category'		=> 'required|between:0,5'
+			)
+		);
+
+		if($validator->fails()) {
+			return Redirect::route('student-registration')
+				->withErrors($validator)
+				->withInput();   // fills the field with the old inputs what were correct
+
+		} else {
+			$student = Student::create(array(
+				'first_name'	=> Input::get('first'),
+				'last_name'		=> Input::get('last'),
+				'category'		=> Input::get('category'),
+				'roll_num'		=> Input::get('rollnumber'),
+				'branch'		=> Input::get('branch'),
+				'year'			=> Input::get('year'),
+				'email_id'		=> Input::get('email'),
+			));
+
+			if($student){
+				return Redirect::route('student-registration')
+					->with('global', 'Your request has been raised, you will be soon approved!');
+			}
+		}
+	}
 
 }
