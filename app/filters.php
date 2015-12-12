@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('/account/sign-in');
+			return Redirect::guest('/sign-in');
 		}
 	}
 });
@@ -87,37 +87,4 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
-});
-
-/* Filter for API Calls. */
-Route::filter('auth.token', function($route, $request)
-{
-    $payload = $request->header('X-Auth-Token');
-
-    // Check if API Key was sent along with the Request.
-    if(!$payload) {
-
-        $response = Response::json([
-            'error' => true,
-            'message' => 'Not authenticated',
-            'code' => 401],
-            401
-        );
-    	return $response;
-    } else {
-
-    	// Checking if the API Key exists in the DB.
-    	$user_api_data = UserApi::select('user_id')
-                    ->where('user_api_key', '=', $payload)
-                    ->orderBy('created_at', 'desc')->first();
-		
-		if ($user_api_data) {
-        	$user_id = $user_api_data->user_id;
-        	$user = User::find($user_id);
-        	Auth::login($user);	// Manually Logging in the User.
-        } else {        
-    		return "Invalid / Expired API Key. Sign In again.";
-    	}
-    }
-
 });

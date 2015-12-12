@@ -19,13 +19,13 @@ Route::group(array('before' => 'guest'), function() {
 	Route::group(array('before' => 'csrf'), function() {
 
 		// Create an account (POST) 
-		Route::post('/account/create', 
+		Route::post('/create', 
 			array('as' => 'account-create-post',
 				'uses' => 'AccountController@postCreate'
 		));
 
 		// Sign in (POST) 
-		Route::post('/account/sign-in', 
+		Route::post('/sign-in', 
 			array('as' => 'account-sign-in-post',
 			'uses' => 'AccountController@postSignIn'
 		));
@@ -33,13 +33,13 @@ Route::group(array('before' => 'guest'), function() {
 	});
 
 	// Sign in (GET) 
-	Route::get('/account/sign-in', array(
+	Route::get('/sign-in', array(
 		'as' 	=> 'account-sign-in',
 		'uses'	=> 'AccountController@getSignIn'
 	));
 
 	// Create an account (GET) 
-	Route::get('/account/create', array(
+	Route::get('/create', array(
 		'as' 	=> 'account-create',
 		'uses' 	=> 'AccountController@getCreate'
 	));
@@ -97,7 +97,7 @@ Route::group(array('before' => 'auth'), function() {
 
 
 	// Sign out (GET) 
-    Route::get('/account/sign-out', array(
+    Route::get('/sign-out', array(
     	'as' => 'account-sign-out',
 		'uses' => 'AccountController@getSignOut'
     ));
