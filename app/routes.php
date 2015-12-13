@@ -56,14 +56,15 @@ Route::group(array('before' => 'guest'), function() {
 		'uses' 	=> 'StudentController@getRegistration'
 	));
     
+    // Render search books panel
     Route::get('/book', array(
         'as' => 'search-book',
         'uses' => 'BooksController@searchBook'
     ));    
 	
-
 });
 
+// Main books Controlller left public so that it could be used without logging in too
 Route::resource('/books', 'BooksController');
 
 // Authenticated group 
@@ -75,13 +76,13 @@ Route::group(array('before' => 'auth'), function() {
 		'uses'	=> 'HomeController@home'
 	));	
 
-	// Add Books to Database
+	// Render Add Books panel
     Route::get('/add-books', array(
         'as' => 'add-books',
         'uses' => 'BooksController@renderAddBooks'
     ));
 
-	// Add Books to Database
+	// Render All Books panel
     Route::get('/all-books', array(
         'as' => 'all-books',
         'uses' => 'BooksController@renderAllBooks'
@@ -93,11 +94,13 @@ Route::group(array('before' => 'auth'), function() {
         'uses' => 'StudentController@renderStudents'
     ));
 
+    // Render students approval panel
     Route::get('/students-for-approval', array(
         'as' => 'students-for-approval',
         'uses' => 'StudentController@renderApprovalStudents'
     ));
 
+    // Main students Controlller resource
     Route::resource('/student', 'StudentController');
 
     // Issue Logs
@@ -106,13 +109,14 @@ Route::group(array('before' => 'auth'), function() {
         'uses' => 'LogController@renderIssueReturn'
     ));
 
+    // Render logs panel
     Route::get('/currently-issued', array(
         'as' => 'currently-issued',
         'uses' => 'LogController@renderLogs'
     ));
 
+    // Main Logs Controlller resource
     Route::resource('/issue-log', 'LogController');
-
 
 	// Sign out (GET) 
     Route::get('/sign-out', array(
