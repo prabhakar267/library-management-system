@@ -27,13 +27,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="display: none;">
 			<div class="module span12">
 				<div class="module-body">
 		            <table class="table table-striped table-bordered table-condensed">
 		                <thead>
 		                    <tr>
-		                        <th>ID</th>
+		                        <th>Book ID</th>
 		                        <th>Book Title</th>
 		                        <th>Author</th>
 		                        <th>Description</th>
@@ -52,6 +52,9 @@
 @stop
 
 @section('custom_bottom_script')
+<script type="text/javascript">
+    var categories_list = {{ json_encode($categories_list) }}
+</script>
 <script type="text/javascript" src="{{ Config::get('view.custom.js') }}/script.searchbook.js"></script>
 
 <script type="text/template" id="search_book">

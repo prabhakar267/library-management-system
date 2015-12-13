@@ -111,9 +111,28 @@ class BooksController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
+	public function show($string)
+	{	
+		$book_list = Books::select('book_id','title','author','description','category_id')
+			->where('title', 'like', '%' . $string . '%')
+			->orWhere('author', 'like', '%' . $string . '%')
+			->orderBy('book_id');
+		
+		$book_list = $book_list->get();
+
+		foreach($book_list as $book){
+			$conditions = array(
+				'book_id'			=> $book->book_id,
+				'available_status'	=> 1
+			);
+			
+			$count = Issue::where($conditions)
+				->count();
+
+			$book->avaliability = ($count > 0) ? true : false;
+		}
+
+        return $book_list;
 	}
 
 
@@ -153,8 +172,7 @@ class BooksController extends \BaseController {
 	}
 
 
-    public function renderAddBooks() {
-    
+    public function renderAddBooks() {    
         $db_control = new HomeController();
 
         return View::make('panel.addbook')
@@ -162,15 +180,17 @@ class BooksController extends \BaseController {
     }
 
     public function renderAllBooks() {
-    
         $db_control = new HomeController();
 
-        return View::make('panel.allbook')
+		return View::make('panel.allbook')
             ->with('categories_list', $db_control->categories_list);
     }
 
     public function searchBook(){
-    	return View::make('public.book-search');
+    	$db_control = new HomeController();
+
+		return View::make('public.book-search')
+			->with('categories_list', $db_control->categories_list);
     }
 
 }

@@ -60,7 +60,11 @@ Route::group(array('before' => 'guest'), function() {
         'as' => 'search-book',
         'uses' => 'BooksController@searchBook'
     ));    
+	
+
 });
+
+Route::resource('/books', 'BooksController');
 
 // Authenticated group 
 Route::group(array('before' => 'auth'), function() {
@@ -82,8 +86,6 @@ Route::group(array('before' => 'auth'), function() {
         'as' => 'all-books',
         'uses' => 'BooksController@renderAllBooks'
     ));
-
-    Route::resource('/books', 'BooksController');
 
 	// Students
     Route::get('/registered-students', array(

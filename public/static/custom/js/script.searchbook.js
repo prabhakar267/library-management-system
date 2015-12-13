@@ -1,11 +1,13 @@
-function loadResults(){
-
+function loadResults(string){
     var url = config.path.ajax 
-            + "/book";
+            + "/books/" + string;
 
-    var table = $('#book-results');
-    
-    var default_tpl = _.template($('#search_book').html());
+    var table = $('#book-results'),
+        table_parent_row = table.parents('.row'),
+        default_tpl = _.template($('#search_book').html());
+
+
+    table_parent_row.show();
 
     $.ajax({
         url : url,
@@ -14,8 +16,16 @@ function loadResults(){
                 table.html('<tr><td colspan="99">No such books found in library</td></tr>');
             } else {
                 table.html('');
-                for (var book in data) {
-                    table.append(default_tpl(data[book]));
+                for(var books in data) {
+                    book = data[books];
+
+                    if(book.avaliability){
+                        book.avaliability = '<a class="btn btn-success">Available</a>';
+                    } else {
+                        book.avaliability = '<a class="btn btn-danger">Not Available</a>';
+                    }
+                    
+                    table.append(default_tpl(book));
                 }
             }
         },
@@ -28,55 +38,11 @@ function loadResults(){
     });
 }
 
-$(document).ready(function(){
-    loadResults();
-    $(document).on("click","#addbooks",function(){
+$(document).ready(function(){   
+    $("#search_book_button").click(function() {
+        var search_query = $(this).parents('form').find('textarea').val();
 
-        var form = $(this).parents('form'),
-            module_body = $(this).parents('.module-body'),
-            sendJSON ={},
-            send_flag = true,
-            f$ = function(selector) {
-                return form.find(selector);
-            };
-
-        sendJSON.title = f$('input[data-form-field~=title]').val();
-        sendJSON.author = f$('input[data-form-field~=author]').val();
-        sendJSON.description = f$('textarea[data-form-field~=description]').val();
-        sendJSON.category = f$('select[data-form-field~=category]').val();
-        sendJSON.number = parseInt(f$('input[data-form-field~=number]').val());
-
-        if(sendJSON.title == "" || sendJSON.author == "" || sendJSON.description == "" || sendJSON.number == null){
-            module_body.prepend(templates.alert_box( {type: 'danger', message: 'Book Details Not Complete'} ));
-            send_flag = false;
-        }
-        
-        if(send_flag == true){
-
-            $.ajax({
-                type : 'POST',
-                data : {
-                    add_book_data : JSON.stringify(sendJSON)
-                },
-                url : config.path.ajax + '/books',
-                success: function(data) {                    
-                    module_body.prepend(templates.alert_box( {type: 'success', message: data} ));
-                },
-                error: function(xhr,status,error){
-                    var err = eval("(" + xhr.responseText + ")");
-                    module_body.prepend(templates.alert_box( {type: 'danger', message: err.error.message} ));
-                },
-                beforeSend: function() {
-                    form.css({'opacity' : '0.4'});
-                },
-                complete: function() {
-                    form.css({'opacity' : '1.0'});
-                }
-            });
-        }
-    }); // add books to database
-
-
-    loadResults();
-
+        if(search_query != '')
+            loadResults(search_query);
+    });
 });
