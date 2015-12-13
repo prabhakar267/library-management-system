@@ -71,6 +71,7 @@
 								{{ Form::token() }}
 							</div>
 						</div>
+						<a href="{{ URL::route('account-sign-in') }}">Go Back!</a>
 					</div>
 				</form>
 			</div>

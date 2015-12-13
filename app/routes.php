@@ -55,7 +55,11 @@ Route::group(array('before' => 'guest'), function() {
 		'as' 	=> 'student-registration',
 		'uses' 	=> 'StudentController@getRegistration'
 	));
-        
+    
+    Route::get('/book', array(
+        'as' => 'search-book',
+        'uses' => 'BooksController@searchBook'
+    ));    
 });
 
 // Authenticated group 

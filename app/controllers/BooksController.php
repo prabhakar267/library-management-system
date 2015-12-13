@@ -168,4 +168,9 @@ class BooksController extends \BaseController {
         return View::make('panel.allbook')
             ->with('categories_list', $db_control->categories_list);
     }
+
+    public function searchBook(){
+    	return View::make('public.book-search');
+    }
+
 }

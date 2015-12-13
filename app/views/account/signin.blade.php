@@ -5,15 +5,15 @@
 <div class="wrapper">
 	<div class="container">
 		<div class="row">
-			<div class="module module-login span4 offset4">
+			<div class="module module-login span4 offset1">
 				<form class="form-vertical" action="{{ URL::route('account-sign-in-post') }}" method="POST">
 					<div class="module-head">
-						<h3>Sign In</h3>
+						<h3>Librarian / Admin Sign In</h3>
 					</div>
 					<div class="module-body">
 						<div class="control-group">
 							<div class="controls row-fluid">
-								<input class="span12" type="text" name="username" placeholder="Username" value="{{ Input::old('login') }}">
+								<input class="span12" type="text" name="username" placeholder="Username" value="{{ Input::old('login') }}" autofocus>
 								@if($errors->has('user_login'))
 									{{ $errors->first('login')}}
 								@endif									
@@ -38,11 +38,20 @@
 								</label>
 							</div>
 						</div>
-						<a href="{{ URL::route('account-create') }}">New User? Sign Up</a>
+						<a href="{{ URL::route('account-create') }}">New librarian? Sign Up</a>
 					</div>
 				</form>
 			</div>
-		</div>
+			<div class="module module-login span4 offset2">
+				<div class="module-head">
+					<h3>Student Section</h3>
+				</div>
+				<div class="module-body">
+                    <p><a href="{{ URL::route('student-registration') }}"><strong>Student Registration Form</strong></a></p>
+                    <p><a href="{{ URL::route('search-book') }}"><strong>Search Book</strong></a></p>
+				</div>
+			</div>
+        </div>
 	</div>
 </div>
 
