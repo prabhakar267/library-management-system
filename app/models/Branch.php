@@ -7,7 +7,7 @@ class Branch extends Eloquent{
     public $timestamps = false;
 
 	protected $table = 'branches';
-	protected $primaryKey = 'branch';
+	protected $primaryKey = 'id';
 
 	protected $hidden = array();
 

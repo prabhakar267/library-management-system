@@ -63,7 +63,34 @@ class StudentController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$student = Student::find($id);
+
+		$student_category = StudentCategories::find($student->category);
+		$student->category = $student_category->category;
+
+		$student_branch = Branch::find($student->branch);
+		$student->branch = $student_branch->branch;
+
+		$issued_book = Logs::select('book_issue_id')
+			->where('student_id', '=', $id)
+			->orderBy('time_stamp', 'desc')
+			->take($student->books_issued)
+			->get();
+
+		// $student['issued_books'] = $this->createNewObject($Issue);
+
+		// for($i=0; $i<$student->books_issued; $i++){
+		// 	$issue = Issue::find($issued_book[$i]->book_issue_id);
+		// 	$book = Books::find($issue->book_id);
+
+		// 	$temp_array = array(
+		// 		'name'	=> $book->title,
+		// 	);
+
+		// 	array_push($student['issued_books'], $temp_array);
+		// }
+
+		return $issued_book;
 	}
 
 

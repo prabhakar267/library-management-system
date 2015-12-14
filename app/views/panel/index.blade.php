@@ -56,7 +56,7 @@
                     </table>
                 </div>
             </div>
-            <div class="module" style="display: none;">
+            <div class="module" style="<!-- display: none; -->">
                 <div class="module-body">
                     <form class="form-horizontal row-fluid" id="findissueform">
                         <div class="control-group">
@@ -69,28 +69,7 @@
                     </form>
                 </div>
                 <div class="module-body">
-                    <table class="table table-striped table-bordered table-condensed" style="display: none;">
-                        <thead>
-                            <tr>
-                                <th>Book ID</th>
-                                <th>Book Title</th>
-                                <th>Author</th>
-                                <th>Description</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="seached-book-results">
-                            <tr>
-                                <td>1</td>
-                                <td>Operating System Concepts</td>
-                                <td>Silberschatz, Galvin and Gagne</td>
-                                <td>An operating system (OS) is software that manages computer hardware and software resources and provides common services for computer programs. The operating system is an essential component of the system software in a computer system.</td>
-                                <td>Computer</td>
-                                <td><a class="btn btn-success">Available</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
                 </div>
             </div>
             <div class="module" style="display: none;">

@@ -18,7 +18,7 @@ function loadSearchedBooks(string){
                 table.html('');
                 for(var books in data) {
                     book = data[books];
-
+                    console.log(book.avaliability);
                     if(book.avaliability){
                         book.avaliability = '<a class="btn btn-success">Available</a>';
                     } else {
@@ -75,10 +75,5 @@ $(document).ready(function(){
                 console.log('aloo2');
                 break;
         }
-        console.log(mode);
-        // var search_query = $(this).parents('form').find('textarea').val();
-
-        // if(search_query != '')
-            // loadResults(search_query);
     });
 });
