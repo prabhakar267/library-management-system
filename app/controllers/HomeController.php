@@ -12,8 +12,10 @@ class HomeController extends BaseController {
         $this->student_categories_list = StudentCategories::select()->orderBy('cat_id')->get();
     }
 
-	public function home()
-	{	
-		return View::make('panel.index');
+	public function home(){	
+		return View::make('panel.index')
+            ->with('categories_list', $this->categories_list)
+            ->with('branch_list', $this->branch_list)
+            ->with('student_categories_list', $this->student_categories_list);
 	}
 }
