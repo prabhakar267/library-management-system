@@ -64,6 +64,9 @@ class StudentController extends \BaseController {
 	public function show($id)
 	{
 		$student = Student::find($id);
+		if($student == NULL){
+			throw new Exception('Invalid Student ID');
+		}
 
 		$student_category = StudentCategories::find($student->category);
 		$student->category = $student_category->category;
