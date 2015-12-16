@@ -71,26 +71,43 @@ class StudentController extends \BaseController {
 		$student_branch = Branch::find($student->branch);
 		$student->branch = $student_branch->branch;
 
-		$issued_book = Logs::select('book_issue_id')
+
+		if($student->rejected == 1){
+			unset($student->approved);
+			unset($student->books_issued);
+			$student->rejected = (bool)$student->rejected;
+
+			return $student;
+		}
+
+		if($student->approved == 0){
+			unset($student->rejected);
+			unset($student->books_issued);
+			$student->approved = (bool)$student->approved;
+
+			return $student;
+		}
+
+		unset($student->rejected);
+		unset($student->approved);
+
+		$student_issued_books = Logs::select('book_issue_id', 'issued_at')
 			->where('student_id', '=', $id)
 			->orderBy('time_stamp', 'desc')
 			->take($student->books_issued)
 			->get();
 
-		// $student['issued_books'] = $this->createNewObject($Issue);
+		foreach($student_issued_books as $issued_book){
+			$issue = Issue::find($issued_book->book_issue_id);
+			$book = Books::find($issue->book_id);
+			$issued_book->name = $book->title;
 
-		// for($i=0; $i<$student->books_issued; $i++){
-		// 	$issue = Issue::find($issued_book[$i]->book_issue_id);
-		// 	$book = Books::find($issue->book_id);
+			$issued_book->issued_at = date('d-M', $issued_book->issued_at);
+		}
 
-		// 	$temp_array = array(
-		// 		'name'	=> $book->title,
-		// 	);
+		$student->issued_books = $student_issued_books;
 
-		// 	array_push($student['issued_books'], $temp_array);
-		// }
-
-		return $issued_book;
+		return $student;
 	}
 
 
