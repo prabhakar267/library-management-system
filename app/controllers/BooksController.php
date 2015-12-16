@@ -143,10 +143,37 @@ class BooksController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-		//
-	}
+	{	
+		$issue = Issue::find($id);
+		$book = Books::find($issue->book_id);
 
+		$issue->book_name = $book->title;
+		$issue->author = $book->author;
+		// $issue->book = $book;
+
+		$issue->category = Categories::find($book->category_id)->category;
+
+		$issue->available_status = (bool)$issue->available_status;
+		if($issue->available_status == 1){
+			return $issue;
+		}
+		
+		// $book_list = $book_list->get();
+
+		// foreach($book_list as $book){
+			// $conditions = array(
+				// 'book_id'			=> $book->book_id,
+				// 'available_status'	=> 1
+			// );
+			
+			// $count = Issue::where($conditions)
+				// ->count();
+
+			// $book->avaliability = ($count > 0) ? true : false;
+		// }
+
+        return $issue;
+	}
 
 	/**
 	 * Update the specified resource in storage.
