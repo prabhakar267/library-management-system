@@ -38,6 +38,58 @@ function loadSearchedBooks(string){
     });
 }
 
+function loadIssue(issueID, module_box){
+    var url = config.path.ajax 
+            + "/books/" + issueID + '/edit';
+
+    var default_tpl = _.template($('#search_issue').html());
+
+    module_box.html('');
+    
+    $.ajax({
+        url : url,
+        success : function(data){
+            module_box.append(default_tpl(data));
+        },
+        error: function(xhr, status, error){
+            var err = eval("(" + xhr.responseText + ")");
+            module_box.prepend(templates.alert_box( {type: 'danger', message: err.error.message} ));
+        },
+        beforeSend : function(){
+            module_box.css({'opacity' : 0.4});
+        },
+        complete : function() {
+            module_box.css({'opacity' : 1.0});
+        }
+    });
+}
+
+function loadStudent(studentID, module_box){
+    var url = config.path.ajax 
+            + "/student/" + studentID;
+
+    var default_tpl = _.template($('#search_student').html());
+
+    module_box.html('');
+    
+    $.ajax({
+        url : url,
+        success : function(data){
+            module_box.append(default_tpl(data));
+        },
+        error: function(xhr, status, error){
+            var err = eval("(" + xhr.responseText + ")");
+            module_box.prepend(templates.alert_box( {type: 'danger', message: err.error.message} ));
+        },
+        beforeSend : function(){
+            module_box.css({'opacity' : 0.4});
+        },
+        complete : function() {
+            module_box.css({'opacity' : 1.0});
+        }
+    });
+}
+
 function showFormModule(formid){
     var form = $('body').find("#" + formid),
         module = form.parents('.module');
@@ -64,15 +116,24 @@ $(document).ready(function(){
         switch(mode){
             case 'book' :
                 var search_query = form.find('textarea').val();
-                loadSearchedBooks(search_query);
+                if(search_query != '')
+                    loadSearchedBooks(search_query);
                 break;
 
             case 'issue' :
-                console.log('aloo3');
+                var searched_book = form.find('input').val(),
+                    module_box = form.parents('.module').find('#module-body-results');
+
+                if(searched_book != '')
+                    loadIssue(searched_book, module_box);
                 break;
 
             case 'student' :
-                console.log('aloo2');
+                var searched_student = form.find('input').val(),
+                    module_box = form.parents('.module').find('#module-body-results');
+
+                if(searched_student != '')
+                    loadStudent(searched_student, module_box);
                 break;
         }
     });

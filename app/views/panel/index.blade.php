@@ -56,7 +56,8 @@
                     </table>
                 </div>
             </div>
-            <div class="module" style="<!-- display: none; -->">
+            
+            <div class="module" style="display: none;">
                 <div class="module-body">
                     <form class="form-horizontal row-fluid" id="findissueform">
                         <div class="control-group">
@@ -68,10 +69,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="module-body">
-                    
-                </div>
+                <div class="module-body" id="module-body-results"></div>
             </div>
+
             <div class="module" style="display: none;">
                 <div class="module-body">
                     <form class="form-horizontal row-fluid" id="findstudentform">
@@ -84,8 +84,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="module-body">
-                </div>
+                <div class="module-body" id="module-body-results"></div>
             </div>
         </div>
     </div>
@@ -105,6 +104,12 @@
 
 <script type="text/template" id="search_book">
     @include('underscore.search_book')
+</script>
+<script type="text/template" id="search_issue">
+    @include('underscore.search_issue')
+</script>
+<script type="text/template" id="search_student">
+    @include('underscore.search_student')
 </script>
 <script type="text/template" id="approvalstudents_show">
     @include('underscore.approvalstudents_show')
