@@ -10,9 +10,7 @@
                         <img src="{{ Config::get('view.images') }}/user.png" class="nav-avatar" />
                         <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Your Profile</a></li>
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">Account Settings</a></li>
+                            <li><a href="https://github.com/prabhakar267/library-management-system" target="_blank">Fork on Github</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ URL::route('account-sign-out') }}">Logout</a></li>
                         </ul>
