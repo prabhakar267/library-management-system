@@ -68,6 +68,8 @@ class StudentController extends \BaseController {
 			throw new Exception('Invalid Student ID');
 		}
 
+		$student->year = (int)substr($student->year, 2, 4);
+
 		$student_category = StudentCategories::find($student->category);
 		$student->category = $student_category->category;
 

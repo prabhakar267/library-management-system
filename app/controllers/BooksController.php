@@ -149,6 +149,8 @@ class BooksController extends \BaseController {
 			throw new Exception('Invalid Book ID');
 		}
 
+		$issue->added_at_timestamp = date('d-M-y h:i A', strtotime($issue->added_at_timestamp));
+		
 		$book = Books::find($issue->book_id);
 
 		$issue->book_name = $book->title;
@@ -194,6 +196,7 @@ class BooksController extends \BaseController {
 		$student_data->category = StudentCategories::find($student_data->category)
 			->category;
 		$issue->student = $student_data;
+
 
         return $issue;
 	}
