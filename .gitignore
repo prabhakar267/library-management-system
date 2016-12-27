@@ -1,0 +1,4 @@
+/public/storage
+/storage/*.key
+/vendor
+/.idea
