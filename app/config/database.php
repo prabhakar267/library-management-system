@@ -1,5 +1,7 @@
 <?php
 
+require_once 'mysql.config.php';
+
 return array(
 
 	/*
@@ -54,10 +56,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'library',
-			'username'  => 'root',
-			'password'  => '696163',
+			'host'      => MYSQL_HOSTNAME,
+			'database'  => MYSQL_DATABASE,
+			'username'  => MYSQL_USERNAME,
+			'password'  => MYSQL_PASSWORD,
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

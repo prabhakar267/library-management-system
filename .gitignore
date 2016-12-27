@@ -2,3 +2,5 @@
 /storage/*.key
 /vendor
 /.idea
+
+mysql.config.php
