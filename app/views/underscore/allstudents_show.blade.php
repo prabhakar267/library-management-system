@@ -11,7 +11,18 @@ for(var i=0; i<categories_list.length; i++){
 		break;
 	}
 }
-var student_year = obj.year.trim().substring(2,4);
+
+
+var student_year = obj.year.toString();
+student_year = student_year.trim().substring(2,4);
+%>
+
+<%
+/**
+ * "student_year" is converted to a string and then processed
+ * to get the last 2 digits of the year
+ * eg : 12 instead of 2012
+ */
 %>
 
 <tr data-student-id="<%= obj.student_id %>">
