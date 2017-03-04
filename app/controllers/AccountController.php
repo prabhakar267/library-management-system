@@ -69,7 +69,7 @@ class AccountController extends BaseController {
 
 
 				return Redirect::route('account-sign-in')
-					->with('global', 'Your account has been created. We have sent you an email to activate your accout');				
+					->with('global', 'Your account has been created. We have sent you an email to activate your account');				
 			}
 		}
 	}
