@@ -76,7 +76,7 @@
                 <div class="module-body">
                     <form class="form-horizontal row-fluid" id="findstudentform">
                         <div class="control-group">
-                            <label class="control-label">Enter Student Name</label>
+                            <label class="control-label">Enter Student ID</label>
                             <div class="controls">
                                 <input type="text" placeholder="" class="span9">
                                 <a class="btn homepage-form-submit">Submit</a>
