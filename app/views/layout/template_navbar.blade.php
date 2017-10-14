@@ -3,7 +3,7 @@
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                 <i class="icon-reorder shaded"></i></a>
-                <a class="brand" href="{{ URL::route('home') }}">NSIT ALMS</a>
+                <a class="brand" href="{{ URL::route('home') }}">ALMS</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
                 <ul class="nav pull-right">
                     <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
