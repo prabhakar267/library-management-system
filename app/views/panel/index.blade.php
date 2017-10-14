@@ -4,7 +4,7 @@
 <div class="content">
     <div class="btn-controls">
         <div class="btn-box-row row-fluid">
-            <a class="btn-box span12"><b>NSIT Automated Library Management System</b></a>
+            <a class="btn-box span12"><b>Automated Library Management System</b></a>
         </div>
 
         <div class="btn-box-row row-fluid">
@@ -56,7 +56,7 @@
                     </table>
                 </div>
             </div>
-            
+
             <div class="module" style="display: none;">
                 <div class="module-body">
                     <form class="form-horizontal row-fluid" id="findissueform">

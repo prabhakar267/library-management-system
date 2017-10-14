@@ -12,7 +12,7 @@
     <link rel="image_src" href="" />
     <link rel="canonical" href="" />
 
-    <title>NSIT Automated Library Management System</title>
+    <title>Automated Library Management System</title>
 
     <link type="text/css" href="{{ Config::get('view.bootstrap.css') }}/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="{{ Config::get('view.bootstrap.css') }}/bootstrap-responsive.min.css" rel="stylesheet">
@@ -40,11 +40,11 @@
 
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
     @include('layout.template_footer')
-    
+
 
 <script src="{{ Config::get('view.script') }}/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="{{ Config::get('view.script') }}/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
