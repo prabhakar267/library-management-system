@@ -175,6 +175,9 @@ body [class^="icon-"], body [class*=" icon-"] {
 	padding-top: 13px;
 	border-top: 1px solid #f5f5f5
 }
+.homepage-form-box {
+	cursor: pointer;
+}
 .module-login {
 	margin-bottom: 80px;
 	margin-top: 80px
