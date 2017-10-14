@@ -42,7 +42,7 @@ php artisan serve
  + Students can access only limited features, i.e., public access level features which include **searching a book** and **student registration form**
  + After logging in librarians can search for a book, book issue or a student from home panel itself
  + Librarians need to make an entry for new books, to automate the process they simply need to enter the number of issues and the Issue ID for each book issue would generate automatically
- + Another responsibility of a librarian is to make approve students because the documents are to verified (or some manual work) so they have a panel to simply approve / reject students and to view all approved students. The librarian ID also gets stored along with each approved/rejected student to keep a track for future.
+ + Another responsibility of a librarian is to verify and approve student's documents. This has been automated, so there is a panel to simply approve / reject students and to view all approved students (insteadm of doing it manually). The librarian ID also gets stored along with each approved/rejected student to keep a track for future.
  + The most important feature for any library is to issue and return books. A panel to view all outstanding logs and a super simple panel to issue and return books for all librarians
 
 
