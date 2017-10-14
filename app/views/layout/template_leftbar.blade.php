@@ -18,7 +18,7 @@
             </li>
             <li>
                 <a href="{{ URL::route('all-books') }}">
-                    <i class="menu-icon icon-th-list"></i>All Books in Library
+                    <i class="menu-icon icon-th-list"></i>Library Books available to Students
                 </a>
             </li>
             <li>
