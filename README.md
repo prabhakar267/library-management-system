@@ -14,6 +14,12 @@ The front end is built on **[Edmin Responsive Bootstrap Admin Template](http://e
 ## Setup
 
 ```shell
+# PHP 5.6 and mcrypt extension are required for this project
+apt-get update
+apt-get install php5.6 php5.6-mcrypt
+```
+
+```shell
 git clone https://github.com/prabhakar267/library-management-system.git
 cd library-management-system
 ```
