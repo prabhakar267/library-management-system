@@ -4,24 +4,26 @@
 <div class="content">
     <div class="btn-controls">
         <div class="btn-box-row row-fluid">
-            <a class="btn-box span12"><b>Automated Library Management System</b></a>
+            <button class="btn-box span12">
+                <b>Automated Library Management System</b>
+            </button>
         </div>
 
         <div class="btn-box-row row-fluid">
-            <a class="btn-box big span4 homepage-form-box" id="findbookbox">
+            <button class="btn-box big span4 homepage-form-box" id="findbookbox">
                 <i class="icon-list"></i>
                 <b>Find Book</b>
-            </a>
+            </button>
 
-            <a class="btn-box big span4 homepage-form-box" id="findissuebox">
+            <button class="btn-box big span4 homepage-form-box" id="findissuebox">
                 <i class="icon-book"></i>
                 <b>Find Book Issue</b>
-            </a>
+            </button>
 
-            <a class="btn-box big span4 homepage-form-box" id="findstudentbox">
+            <button class="btn-box big span4 homepage-form-box" id="findstudentbox">
                 <i class="icon-user"></i>
                 <b>Find Student</b>
-            </a>
+            </button>
         </div>
 
         <div class="content">
