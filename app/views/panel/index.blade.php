@@ -4,24 +4,26 @@
 <div class="content">
     <div class="btn-controls">
         <div class="btn-box-row row-fluid">
-            <a class="btn-box span12"><b>NSIT Automated Library Management System</b></a>
+            <button class="btn-box span12">
+                <b>Automated Library Management System</b>
+            </button>
         </div>
 
         <div class="btn-box-row row-fluid">
-            <a class="btn-box big span4 homepage-form-box" id="findbookbox">
+            <button class="btn-box big span4 homepage-form-box" id="findbookbox">
                 <i class="icon-list"></i>
                 <b>Find Book</b>
-            </a>
+            </button>
 
-            <a class="btn-box big span4 homepage-form-box" id="findissuebox">
+            <button class="btn-box big span4 homepage-form-box" id="findissuebox">
                 <i class="icon-book"></i>
                 <b>Find Book Issue</b>
-            </a>
+            </button>
 
-            <a class="btn-box big span4 homepage-form-box" id="findstudentbox">
+            <button class="btn-box big span4 homepage-form-box" id="findstudentbox">
                 <i class="icon-user"></i>
                 <b>Find Student</b>
-            </a>
+            </button>
         </div>
 
         <div class="content">
@@ -76,7 +78,7 @@
                 <div class="module-body">
                     <form class="form-horizontal row-fluid" id="findstudentform">
                         <div class="control-group">
-                            <label class="control-label">Enter Student Name</label>
+                            <label class="control-label">Enter Student ID</label>
                             <div class="controls">
                                 <input type="text" placeholder="" class="span9">
                                 <a class="btn homepage-form-submit">Submit</a>
