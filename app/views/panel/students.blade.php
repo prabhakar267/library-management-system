@@ -7,7 +7,7 @@
 <div class="content">
     <div class="module">
         <div class="module-head">
-            <h3>Tables</h3>
+            <h3>All Students Approved</h3>
         </div>
         <div class="module-body">
             <div class="controls">

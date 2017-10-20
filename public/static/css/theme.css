@@ -42,7 +42,8 @@ strong, b {
 	color: #555
 }
 a:hover, a:focus {
-	outline: 0
+	outline: 0;
+	cursor: pointer
 }
 small, .small {
 	font-size: 11px
