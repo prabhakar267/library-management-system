@@ -8,8 +8,8 @@
  + [Screenshots](meta/README.md)
 
 ## Development
-The backend of the system is developed on **[Laravel 4.2 PHP MVC Framework](http://laravel.com/)** and requires PHP 5.6 with the appropriate MCrypt extension.
-The front end is built on **[Edmin Responsive Bootstrap Admin Template](http://egrappler.com/responsive-bootstrap-admin-template-edmin/)** ([Demo](http://www.egrappler.com/edmin/index.html)) which is built on [Bootstrap v2.2.2](http://bootstrapdocs.com/v2.2.2/docs/) using [jQuery](https://blog.jquery.com/2013/02/04/jquery-1-9-1-released/) and [Underscore-Dot-JS](http://underscorejs.org/)
+The backend of the system is developed on **[Laravel 4.2 PHP MVC Framework](https://laravel.com/)**
+The front end is built on **[Edmin Responsive Bootstrap Admin Template](http://egrappler.com/responsive-bootstrap-admin-template-edmin/)** ([Demo](http://www.egrappler.com/edmin/index.html)) which is built on [Bootstrap v2.2.2](https://bootstrapdocs.com/v2.2.2/docs/) using [jQuery](https://blog.jquery.com/2013/02/04/jquery-1-9-1-released/) and [Underscore-Dot-JS](http://underscorejs.org/)
 
 ## Setup
 
@@ -48,7 +48,7 @@ php artisan serve
  + Students can access only limited features, i.e., public access level features which include **searching a book** and **student registration form**
  + After logging in librarians can search for a book, book issue or a student from home panel itself
  + Librarians need to make an entry for new books, to automate the process they simply need to enter the number of issues and the Issue ID for each book issue would generate automatically
- + Another responsibility of a librarian is to make approve students because the documents are to verified (or some manual work) so they have a panel to simply approve / reject students and to view all approved students. The librarian ID also gets stored along with each approved/rejected student to keep a track for future.
+ + Another responsibility of a librarian is to verify and approve student's documents. This has been automated, so there is a panel to simply approve / reject students and to view all approved students (insteadm of doing it manually). The librarian ID also gets stored along with each approved/rejected student to keep a track for future.
  + The most important feature for any library is to issue and return books. A panel to view all outstanding logs and a super simple panel to issue and return books for all librarians
 
 
