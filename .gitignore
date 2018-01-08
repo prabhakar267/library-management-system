@@ -4,3 +4,11 @@
 /.idea
 
 mysql.config.php
+
+#IDE Specific Folders
+nbproject #Netbeans
+.vscode #Visual Studio Code
+
+
+#OS Specific Folders
+.DS_Store #Mac OS
