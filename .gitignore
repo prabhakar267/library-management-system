@@ -1,14 +1,22 @@
+/bootstrap/compiled.php
+/vendor
+app/storage/
+
 /public/storage
 /storage/*.key
-/vendor
 /.idea
+.env
 
+composer.phar
+
+# MySQL Configuration File
 mysql.config.php
 
-#IDE Specific Folders
+# IDE Specific Folders
 nbproject #Netbeans
 .vscode #Visual Studio Code
 
-
-#OS Specific Folders
-.DS_Store #Mac OS
+# OS Specific Folders
+.DS_Store # Mac OS
+*~ # Linux
+Desktop.ini # Windows
