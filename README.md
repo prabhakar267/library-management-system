@@ -12,36 +12,66 @@ The backend of the system is developed on **[Laravel 4.2 PHP MVC Framework](http
 The front end is built on **[Edmin Responsive Bootstrap Admin Template](http://egrappler.com/responsive-bootstrap-admin-template-edmin/)** ([Demo](http://www.egrappler.com/edmin/index.html)) which is built on [Bootstrap v2.2.2](http://bootstrapdocs.com/v2.2.2/docs/) using [jQuery](https://blog.jquery.com/2013/02/04/jquery-1-9-1-released/) and [Underscore-Dot-JS](http://underscorejs.org/)
 
 ## Setup
+### Unix / Linux / Mac Setup
 
-```shell
-# PHP 5.6 and mcrypt extension are required for this project
-apt-get update
-apt-get install php5.6 php5.6-mcrypt
-```
+*NOTE:* PHP 5.6 and mcrypt extension are required for this project:
 
-```shell
-git clone https://github.com/prabhakar267/library-management-system.git
-cd library-management-system
-```
+* `apt-get update`
 
-```shell
-[sudo] chmod -R 755 app/storage
-```
+* `apt-get install php5.6 php5.6-mcrypt`
 
-```shell
-composer install
-```
+* `git clone https://github.com/prabhakar267/library-management-system`
 
- + Edit [mysql.config.php.sample](app/config/mysql.config.php.sample) according to your MySQL configurations and save it in the same directory as ```mysql.config.php```
- + Open your MySQL console / MySQL administration tool (like [phpMyAdmin](https://www.phpmyadmin.net/)) and import the [database dump](database/library.sql)
+* `cd library-management-system`
 
-```shell
-php artisan migrate
-```
+* `[sudo] chmod -R 755 app/storage`
 
-```shell
-php artisan serve
-```
+* `composer install`
+
+ * Edit [mysql.config.php.sample](app/config/mysql.config.php.sample) according to your MySQL configurations and save it in the same directory as ```mysql.config.php```
+
+* `php artisan migrate`
+
+* `php artisan serve`
+
+### Windows Setup
+
+*Some notes on Windows setup:*
+
+*Obtaining the `mcrypt` extension for PHP 7+ is not trivial and involves compiling your own PHP build.
+If your PHP version does not support `mcrypt` (i.e. if you have PHP 7+), then the easiest way to run Laravel 4.2 applications is to [download a compatible version of XAMPP](https://www.apachefriends.org/xampp-files/5.6.33/xampp-win32-5.6.33-0-VC11-installer.exe) and make sure the app is run with it.*
+
+With the above notes in mind, Windows setup is not too tricky:
+
+* Open git shell;
+
+* `cd C:/path/to/xampp/htdocs`;
+
+* `git clone https://github.com/prabhakar267/library-management-system`;
+
+* `cd library-management-system`;
+
+* `composer update`;
+
+* **NOTE:** If your PHP version is not compatible with `mcrypt` you will receive an error here. Do not worry, simply perform these additional two steps:
+ * `C:/path/to/xampp5.6.33/php/php.exe artisan clear-compiled`
+ * `C:/path/to/xampp5.6.33/php/php.exe artisan cache:clear`
+
+* Create a table for the app via phpmyadmin (or however you prefer);
+
+* Edit `app/config/mysql.config.php.sample` according to your MySQL configurations and save it in the same directory as `mysql.config.php`;
+
+* `php artisan migrate`
+
+ **OR IF YOUR PHP IS NOT `mcrypt` COMPATIBLE:**
+
+ `C:/path/to/xampp5.6.33/php/php.exe artisan migrate`
+
+* `php artisan serve`
+
+ **OR IF YOUR PHP IS NOT `mcrypt` COMPATIBLE:**
+
+ `C:/path/to/xampp5.6.33/php/php.exe artisan serve`
 
 ## Features
  + Librarians can be given their authorized login ID and password without which system can not be accessed.
@@ -56,4 +86,3 @@ php artisan serve
 
 --------------------------
 Feel free to contact me via [email](http://goo.gl/68kmd6)
-

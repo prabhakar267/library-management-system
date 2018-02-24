@@ -9,7 +9,7 @@
     <dt>Available Status</dt>
     <dd><%= obj.available_status %></dd>
     <dt>Date of addition</dt>
-    <dd><%= obj.added_at_timestamp %></dd>
+    <dd><%= obj.updated_at %></dd>
 </dl>
 
 <%

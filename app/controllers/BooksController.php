@@ -19,13 +19,13 @@ class BooksController extends \BaseController {
 
 		$book_list = Books::select('book_id','title','author','description','category_id')
 			->orderBy('book_id');
-		
+
 		$this->filterQuery($book_list);
-		
+
 		$book_list = $book_list->get();
 
 		for($i=0; $i<count($book_list); $i++){
-	        
+
 	        $id = $book_list[$i]['book_id'];
 	        $conditions = array(
 	        	'book_id'			=> $id,
@@ -35,7 +35,7 @@ class BooksController extends \BaseController {
 	        $book_list[$i]['total_books'] = Issue::select()
 	        	->where('book_id','=',$id)
 	        	->count();
-	        
+
 	        $book_list[$i]['avaliable'] = Issue::select()
 	        	->where($conditions)
 	        	->count();
@@ -81,9 +81,9 @@ class BooksController extends \BaseController {
 				$db_flag = true;
 			} else {
 				$number_of_issues = $books['number'];
-				
+
 				for($i=0; $i<$number_of_issues; $i++){
-					
+
 					$issues = Issue::create(array(
 						'book_id'	=> $newId,
 						'added_by'	=> $user_id
@@ -99,7 +99,7 @@ class BooksController extends \BaseController {
 				throw new Exception('Invalid update data provided');
 
 		});
-	
+
 		return "Books Added successfully to Database";
 
 	}
@@ -112,12 +112,12 @@ class BooksController extends \BaseController {
 	 * @return Response
 	 */
 	public function show($string)
-	{	
+	{
 		$book_list = Books::select('book_id','title','author','description','category_id')
 			->where('title', 'like', '%' . $string . '%')
 			->orWhere('author', 'like', '%' . $string . '%')
 			->orderBy('book_id');
-		
+
 		$book_list = $book_list->get();
 
 		foreach($book_list as $book){
@@ -125,7 +125,7 @@ class BooksController extends \BaseController {
 				'book_id'			=> $book->book_id,
 				'available_status'	=> 1
 			);
-			
+
 			$count = Issue::where($conditions)
 				->count();
 
@@ -143,19 +143,17 @@ class BooksController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id)
-	{	
+	{
 		$issue = Issue::find($id);
 		if($issue == NULL){
 			throw new Exception('Invalid Book ID');
 		}
 
-		$issue->added_at_timestamp = date('d-M-y h:i A', strtotime($issue->added_at_timestamp));
-		
 		$book = Books::find($issue->book_id);
 
 		$issue->book_name = $book->title;
 		$issue->author = $book->author;
-		
+
 		$issue->category = Categories::find($book->category_id)
 			->category;
 
@@ -163,7 +161,7 @@ class BooksController extends \BaseController {
 		if($issue->available_status == 1){
 			return $issue;
 		}
-		
+
 		$conditions = array(
 			'return_time'	=> 0,
 			'book_issue_id'	=> $id,
@@ -225,7 +223,7 @@ class BooksController extends \BaseController {
 	}
 
 
-    public function renderAddBooks() {    
+    public function renderAddBooks() {
         $db_control = new HomeController();
 
         return View::make('panel.addbook')
