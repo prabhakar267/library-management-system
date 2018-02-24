@@ -21,7 +21,7 @@ class StudentController extends \BaseController {
 
 		$this->filterQuery($students);
 		$students = $students->get();
-    
+
         return $students;
 	}
 
@@ -32,14 +32,14 @@ class StudentController extends \BaseController {
 			'approved'	=> 1,
 			'rejected'	=> 0
 		);
-		
+
 		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'year', 'email_id', 'books_issued')
 			->where($conditions)
 			->orderBy('student_id');
 
 		$this->filterQuery($students);
 		$students = $students->get();
-    
+
         return $students;
 	}
 
@@ -98,7 +98,7 @@ class StudentController extends \BaseController {
 
 		$student_issued_books = Logs::select('book_issue_id', 'issued_at')
 			->where('student_id', '=', $id)
-			->orderBy('time_stamp', 'desc')
+			->orderBy('created_at', 'desc')
 			->take($student->books_issued)
 			->get();
 
@@ -136,9 +136,9 @@ class StudentController extends \BaseController {
 	 */
 	public function update($id){
         $flag = (bool)Input::get('flag');
-		
+
         $student = Student::findOrFail($id);
-		
+
 		if($flag){
 			// if student is approved
 	        $student->approved = 1;
@@ -146,9 +146,9 @@ class StudentController extends \BaseController {
 			// if student is rejected for some reason
 			$student->rejected = 1;
 		}
-        
+
         $student->save();
-    
+
         return "Student's approval/rejection status successfully changed.";
 	}
 

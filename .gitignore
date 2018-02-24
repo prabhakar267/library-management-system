@@ -1,6 +1,5 @@
 /bootstrap/compiled.php
 /vendor
-app/storage/
 
 /public/storage
 /storage/*.key
