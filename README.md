@@ -51,6 +51,23 @@ The front end is built on **[Edmin Responsive Bootstrap Admin Template](http://e
 
 *Some notes on Windows setup:*
 
+**MySQL setup**
+
+* Open this link to [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/).
+
+* Scroll to the bottom and select *Microsoft Windows* in the *Select your Operating System* dropdown.
+
+* Click *download* button in front of *Windows (x86, 64-bit), MSI Installer* at the bottom.
+
+* Right-click the downloaded MSI file and select the Install item from the pop-up menu, or double-click the file.
+
+* In the Setup Type window you may choose a Complete or Custom installation. To use all features of MySQL Workbench choose the Complete option.
+
+* Unless you choose otherwise, MySQL Workbench is installed in `C:\%PROGRAMFILES%\MySQL\MySQL Workbench 8.0 edition_type\`, where `%PROGRAMFILES%` is the default directory for programs for your locale. The `%PROGRAMFILES%` directory is defined as `C:\Program Files\` on most systems.
+
+
+**PHP Setup**
+
 *Obtaining the `mcrypt` extension for PHP 7+ is not trivial and involves compiling your own PHP build.
 If your PHP version does not support `mcrypt` (i.e. if you have PHP 7+), then the easiest way to run Laravel 4.2 applications is to [download a compatible version of XAMPP](https://www.apachefriends.org/xampp-files/5.6.33/xampp-win32-5.6.33-0-VC11-installer.exe) and make sure the app is run with it.*
 
