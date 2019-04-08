@@ -12,22 +12,15 @@ class CategoriesController extends \BaseController {
 		$category_list = Categories::select('id','category','created_at','updated_at')
 			->orderBy('id');
 
-		$this->filterQuery($category_list);
+		$category_list = $category_list->get();	
+		// $this->filterQuery($category_list);
 
-		$category_list = $category_list->get();
+		// $category_list = $category_list->get();
 
-		for($i=0; $i<count($category_list); $i++){
+		// for($i=0; $i<count($category_list); $i++){
 
-	        $id = $category_list[$i]['id'];
-
-
-	        // $category_list[$i]['total_categories'] = Issue::select()
-	        // 	->where('id','=',$id)
-	        // 	->count();
-
-	        // $category_list[$i]['avaliable'] = Issue::select()
-	        // 	->count();
-		}
+	 //        $id = $category_list[$i]['id'];
+		// }
 
         return $category_list;
 	}
@@ -118,14 +111,10 @@ class CategoriesController extends \BaseController {
 	}
 
 	public function renderAddCategories() {
-        $db_control = new HomeController();
-
         return View::make('panel.addcategory');
     }
 
     public function renderAllCategories() {
-        $db_control = new HomeController();
-
 		return View::make('panel.allcategories');
     }
 }

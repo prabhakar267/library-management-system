@@ -1,21 +1,23 @@
 function loadResults(){
-
     var url = config.path.ajax 
-            + "/books?category_id=" + $('#category_fill').val();
+            + "/show-categories";
 
-    var table = $('#all-categories');
-    
-    var default_tpl = _.template($('#allcategories').html());
+    var table = $('#allcategories-table');
+
+    var default_tpl = _.template($('#allcategories_show').html());
+
 
     $.ajax({
         url : url,
         success : function(data){
             if($.isEmptyObject(data)){
-                table.html('<tr><td colspan="99">No Category found!</td></tr>');
+                table.html('<tr><td colspan="99">No Categories found.</td></tr>');
             } else {
                 table.html('');
-                for (var category in data) {
-                    table.append(default_tpl(data[category]));
+                // console.log(JSON.stringify(data));
+                
+                for(var category_list in data){
+                    table.append(default_tpl(data[category_list]));
                 }
             }
         },
@@ -27,6 +29,8 @@ function loadResults(){
         }
     });
 }
+
+
 
 $(document).ready(function(){
 
@@ -56,7 +60,7 @@ $(document).ready(function(){
                 data : {
                     add_category_data : JSON.stringify(sendJSON)
                 },
-                url : config.path.ajax + 'categories',
+                url : config.path.ajax + 'show-categories',
                 
                 success: function(data) {                    
                     module_body.prepend(templates.alert_box( {type: 'success', message: data} ));

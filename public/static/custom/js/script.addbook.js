@@ -3,6 +3,14 @@ function loadResults(){
     var url = config.path.ajax 
             + "/books?category_id=" + $('#category_fill').val();
 
+    // By default show all Books, if a category is null or not selected from the dropdown
+
+    if($('#category_fill').val() == "" || $('#category_fill').val() == null)
+    {        
+        url = config.path.ajax+"/books";
+    }
+
+
     var table = $('#all-books');
     
     var default_tpl = _.template($('#allbooks_show').html());

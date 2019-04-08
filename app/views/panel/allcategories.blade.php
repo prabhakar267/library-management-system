@@ -9,13 +9,7 @@
         <div class="module-head">
             <h3>Books Categories</h3>
         </div>
-        <div class="module-body">
-<!--             <p>
-                <strong>Combined</strong>
-                -
-                <small>table class="table table-striped table-bordered table-condensed"</small>
-            </p> -->
-            
+        <div class="module-body">           
             <table class="table table-striped table-bordered table-condensed">
                 <thead>
                     <tr>
@@ -25,7 +19,7 @@
                         <th>Updated at</th>
                     </tr>
                 </thead>
-                <tbody id="all-categories">
+                <tbody id="allcategories-table">
                     <tr class="text-center">
                         <td colspan="99">Loading...</td>
                     </tr>
