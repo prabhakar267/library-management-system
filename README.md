@@ -3,6 +3,7 @@
 > An automated system to manage a public library. Admin panel for librarians to control and manage the system easily through an interactive interface.
 
  + [Development](#development)
+ + [Contribute](#contribute)
  + [Setup](#setup)
  + [Features](#features)
  + [Screenshots](meta/README.md)
@@ -10,6 +11,10 @@
 ## Development
 The backend of the system is developed on **[Laravel 4.2 PHP MVC Framework](http://laravel.com/)** and requires PHP 5.6 with the appropriate MCrypt extension.
 The front end is built on **[Edmin Responsive Bootstrap Admin Template](http://egrappler.com/responsive-bootstrap-admin-template-edmin/)** ([Demo](http://www.egrappler.com/edmin/index.html)) which is built on [Bootstrap v2.2.2](http://bootstrapdocs.com/v2.2.2/docs/) using [jQuery](https://blog.jquery.com/2013/02/04/jquery-1-9-1-released/) and [Underscore-Dot-JS](http://underscorejs.org/)
+
+## Contribute
++ For reporting bug about an incorrect file not being processed, open a new issue.
++ PRs are always welcome to improve exisiting system.
 
 ## Setup
 
@@ -113,6 +118,3 @@ With the above notes in mind, Windows setup is not too tricky:
 
 
 ![](meta/screencapture-library-local-1450375427449.png)
-
---------------------------
-Feel free to contact me via [email](http://goo.gl/68kmd6)
