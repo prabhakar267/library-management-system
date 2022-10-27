@@ -14,8 +14,8 @@
 						<div class="control-group">
 							<div class="controls row-fluid">
 								<input class="span12" type="text" name="username" placeholder="Username" value="{{ Input::old('login') }}" autofocus>
-								@if($errors->has('user_login'))
-									{{ $errors->first('login')}}
+								@if($errors->has('username'))
+									{{ $errors->first('username')}}
 								@endif									
 							</div>
 						</div>
