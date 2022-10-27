@@ -13,9 +13,9 @@
 					<div class="module-body">
 						<div class="control-group">
 							<div class="controls row-fluid">
-								<input class="span12" type="text" placeholder="Username" name="username" value="{{ Input::old('login') }}"> 
-								@if($errors->has('login'))
-									{{ $errors->first('login')}}
+								<input class="span12" type="text" placeholder="Username" name="username" value="{{ Input::old('username') }}"> 
+								@if($errors->has('username'))
+									{{ $errors->first('username')}}
 								@endif								
 							</div>
 						</div>

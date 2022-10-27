@@ -24,21 +24,17 @@ class BooksController extends \BaseController {
 
 		$book_list = $book_list->get();
 
-		for($i=0; $i<count($book_list); $i++){
+		foreach ($book_list as $book) {
+			$id = $book->id;
 
-	        $id = $book_list[$i]['book_id'];
-	        $conditions = array(
-	        	'book_id'			=> $id,
-	        	'available_status'	=> 1
-        	);
+			$book->total_books = Issue::where('book_id','=',$id)
+						->count();
 
-	        $book_list[$i]['total_books'] = Issue::select()
-	        	->where('book_id','=',$id)
-	        	->count();
-
-	        $book_list[$i]['avaliable'] = Issue::select()
-	        	->where($conditions)
-	        	->count();
+			$book->avaliable = Issue::where([
+					'book_id' => $id,
+					'available_status'	=> 1
+				])
+				->count();
 		}
 
         return $book_list;
@@ -166,6 +162,7 @@ class BooksController extends \BaseController {
 			'return_time'	=> 0,
 			'book_issue_id'	=> $id,
 		);
+
 		$book_issue_log = Logs::where($conditions)
 			->take(1)
 			->get();
