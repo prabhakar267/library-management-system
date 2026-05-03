@@ -64,11 +64,14 @@ Route::group(array('before' => 'guest'), function() {
 	
 });
 
-// Main books Controlller left public so that it could be used without logging in too
-Route::resource('/books', 'BooksController');
+// Public read-only book routes for search/browse without logging in
+Route::resource('/books', 'BooksController', array('only' => array('index', 'show')));
 
-// Authenticated group 
+// Authenticated group
 Route::group(array('before' => 'auth'), function() {
+
+	// Protected book modification routes (require login)
+	Route::resource('/books', 'BooksController', array('only' => array('create', 'store', 'edit', 'update', 'destroy')));
 
 	// Home Page of Control Panel
 	Route::get('/',array(
