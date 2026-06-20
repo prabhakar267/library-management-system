@@ -4,7 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "10.48.*"
+		"laravel/framework": "12.61.*"
 	},
 	"autoload": {
 		"classmap": [
